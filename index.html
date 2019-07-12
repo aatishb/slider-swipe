@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Load in libraries here -->
+  <script src="https://unpkg.com/vue"></script>
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="root" @mousedown="mousePressed" @mouseup="mouseReleased">
+
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+
+  </div>
+
+<script src="vue-definitions.js"></script>
+
+</body>
+
+</html>
