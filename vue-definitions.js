@@ -9,17 +9,14 @@ Vue.component('slider',{
 
   methods: {
     mouseEntered: function(event) {
-      //console.log('mouse entered');
       this.mouseOverElement = true;
     },
 
     mouseLeft: function(event) {
-      //console.log('mouse left');
       this.mouseOverElement = false;
     },
 
     sliderMoved: function(event) {
-      //console.log(this.mouseIsPressed);
       if (this.mouseIsPressed && this.mouseOverElement) {
         this.updateSlider(event);
       }
@@ -34,14 +31,7 @@ Vue.component('slider',{
       let bounds = event.target.getBoundingClientRect();
       let x = event.clientX - bounds.left;
       let width = bounds.right - bounds.left - 1;
-      //let value = slider.min + (slider.max - slider.min) * (event.pageX - 20)/128;
-      //value = Math.round(value*100)/100;
-      //slider.value = value;
       slider.value = slider.min + (slider.max - slider.min) * x / width;
-      //console.log(x, width, slider.value);
-
-      //console.log(slider.min, slider.max, event.pageX);
-      //console.log(value, slider.value);
     }
 
   },
@@ -60,12 +50,10 @@ let app = new Vue({
 
   methods: {
     mousePressed: function(event) {
-      //console.log('mouse pressed');
       this.mouseIsPressed = true;
     },
 
     mouseReleased: function(event) {
-      //console.log('mouse released');
       this.mouseIsPressed = false;
     }
 
