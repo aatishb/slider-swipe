@@ -11,11 +11,9 @@
 
   <div id="root" @mousedown="mousePressed" @mouseup="mouseReleased">
 
-  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
-  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
-  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
-  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
-  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed" v-model="color[0]"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed" v-model="color[1]"></slider>
+  <slider min="0" max="1" step="0.01" :mouse-is-pressed="mouseIsPressed" v-model="color[2]"></slider>
 
   </div>
 
