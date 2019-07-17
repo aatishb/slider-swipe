@@ -3,7 +3,7 @@ Vue.component('slider',{
 
   template: `
   <div>
-    <input type="range" :min="min" :max="max" :step="step" :value="value" @mousedown.prevent @mouseleave="mouseLeft" @mouseenter="mouseEntered" @mousemove="sliderMoved" @click="sliderClicked"></input>
+    <input type="range" :min="min" :max="max" :step="step" :value="value" @mousedown.prevent @mouseleave="mouseLeft" @mouseenter="mouseEntered" @mousemove="sliderMoved" @click="sliderClicked" @change="sliderChanged"></input>
   </div>
   `,
 
@@ -26,20 +26,34 @@ Vue.component('slider',{
       this.updateSlider(event);
     },
 
+    sliderChanged: function(event) {
+      let slider = event.target;
+      this.$emit('input', slider.value)
+    },
+
     updateSlider: function(event) {
       let slider = event.target;
-      let bounds = event.target.getBoundingClientRect();
-      let x = event.clientX - bounds.left;
-      let width = bounds.right - bounds.left - 1;
-      slider.value = slider.min + (slider.max - slider.min) * x / width;
+      let offset = event.target.getBoundingClientRect().left;
+
+      let x = event.clientX - offset;
+      let pos = Math.round(x / slider.step) * slider.step / (slider.clientWidth - 1);
+
+      let value = slider.min + (slider.max - slider.min) * pos;
+
+      if (value < slider.min) {
+        value = slider.min;
+      } else if (value > slider.max) {
+        value = slider.max;
+      }
+
+      slider.value = value;
       this.$emit('input', slider.value)
     }
   },
 
   data: function() {
     return {
-      mouseOverElement: false,
-      sliderVal: 0
+      mouseOverElement: false
     }
   }
 });
